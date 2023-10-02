@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :size, style: "display: block" %>
-    <%= form.number_field :size %>
+    <%= form.select :size, options_for_select(Race.sizes.map {|key, value| [key.titleize, Race.sizes.key(value)]}) %>
   </div>
 
   <div>

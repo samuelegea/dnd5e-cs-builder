@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_23_204016) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_211306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "language_speakers", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.string "speaker_type"
+    t.bigint "speaker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_language_speakers_on_language_id"
+    t.index ["speaker_type", "speaker_id"], name: "index_language_speakers_on_speaker"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "races", force: :cascade do |t|
     t.string "name"
@@ -23,4 +40,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_23_204016) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "language_speakers", "languages"
 end

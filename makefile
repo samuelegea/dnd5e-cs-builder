@@ -43,7 +43,7 @@ run-generate:
 	$(DOCKER) bundle exec rails generate $(RUN_ARGS)
 
 up:
-	docker compose up
+	docker compose up $(RUN_ARGS)
 
 c: run-console
 g: run-generate
