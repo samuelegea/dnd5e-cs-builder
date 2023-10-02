@@ -13,7 +13,13 @@
 #   > bundle exec rails g model Order user:references record:references{polymorphic}
 #
 RUN_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
-DOCKER := ((docker-compose ps -q web) && (docker exec -it $$(docker-compose ps -q web))) || (docker compose run --rm web)
+DOCKER := docker exec -it $$(docker-compose ps -q web)
+
+bash:
+	$(DOCKER) bash
+
+console:
+	$(DOCKER) bundle exec rails console
 
 add-migration:
 	$(DOCKER) bundle exec rails g migration $(RUN_ARGS)
