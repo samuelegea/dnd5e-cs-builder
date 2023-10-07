@@ -21,6 +21,9 @@ bash:
 console:
 	$(DOCKER) bundle exec rails console
 
+rc:
+	$(DOCKER) bundle exec rails $(RUN_ARGS)
+
 add-migration:
 	$(DOCKER) bundle exec rails g migration $(RUN_ARGS)
 
@@ -30,8 +33,10 @@ add-model:
 db-create:
 	bundle exec rake db:create
 
-db-migrate:
+dbm:
 	$(DOCKER) bundle exec rake db:migrate
+dbs:
+	$(DOCKER) bundle exec rake db:seed
 
 db-rollback:
 	$(DOCKER) bundle exec rake db:rollback

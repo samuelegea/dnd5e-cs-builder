@@ -1,25 +1,20 @@
 class RacesController < ApplicationController
   before_action :set_race, only: %i[ show edit update destroy ]
 
-  # GET /races or /races.json
   def index
     @races = Race.all
   end
 
-  # GET /races/1 or /races/1.json
   def show
   end
 
-  # GET /races/new
   def new
     @race = Race.new
   end
 
-  # GET /races/1/edit
   def edit
   end
 
-  # POST /races or /races.json
   def create
     @race = Race.new(race_params)
 
@@ -34,7 +29,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /races/1 or /races/1.json
   def update
     respond_to do |format|
       if @race.update(race_params)
@@ -47,7 +41,6 @@ class RacesController < ApplicationController
     end
   end
 
-  # DELETE /races/1 or /races/1.json
   def destroy
     @race.destroy
 
@@ -58,13 +51,11 @@ class RacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_race
-      @race = Race.find(params[:id])
-    end
+  def set_race
+    @race = Race.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def race_params
-      params.require(:race).permit(:name, :description, :size, :speed)
-    end
+  def race_params
+    params.require(:race).permit(:name, :description, :size, :speed)
+  end
 end

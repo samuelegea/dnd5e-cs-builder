@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1.0.rc2'
 gem 'sprockets-rails'
 gem 'puma', '~> 5.0'
 gem 'importmap-rails'
@@ -29,9 +29,14 @@ gem 'shoulda-matchers'
 gem 'database_cleaner'
 gem 'simplecov'
 gem 'simplecov-console'
+gem 'activeadmin'
+gem 'devise'
+gem 'sassc-rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
+  gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 group :development do

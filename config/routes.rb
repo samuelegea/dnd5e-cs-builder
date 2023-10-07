@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :armor_shields
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :features
   resources :languages
   resources :races
