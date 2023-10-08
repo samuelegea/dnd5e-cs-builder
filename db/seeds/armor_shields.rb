@@ -1,8 +1,8 @@
-Rails.logger.info 'Starting ArmorShield seed'
-Rails.logger.info 'Destroying all ArmorShields'
+pp 'Seeds files -- ArmorShields -- [INFO] -- Starting ArmorShield seed'
+pp 'Seeds files -- ArmorShields -- [INFO] -- Destroying all ArmorShields'
 ArmorShield.destroy_all
 
-Rails.logger.info 'Creating ArmorShields'
+pp 'Seeds files -- ArmorShields -- [INFO] -- Creating ArmorShields'
 ArmorShield.insert_all!(
   [
     {
@@ -233,4 +233,4 @@ ArmorShield.insert_all!(
   ]
 )
 
-Rails.logger.info 'Finished ArmorShield seed'
+pp 'Seeds files -- ArmorShields -- [INFO] -- Finished ArmorShield seed'

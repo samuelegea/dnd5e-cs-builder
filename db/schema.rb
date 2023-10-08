@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_03_005023) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_08_001118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_03_005023) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "creature_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feature_owners", force: :cascade do |t|
     t.bigint "feature_id", null: false
     t.string "owner_type", null: false
@@ -100,8 +107,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_03_005023) do
     t.integer "speed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "age", default: "", null: false
+    t.string "alignment", default: "", null: false
+    t.jsonb "asi", default: {}, null: false
+    t.bigint "super_race_id"
+    t.index ["super_race_id"], name: "index_races_on_super_race_id"
   end
 
   add_foreign_key "feature_owners", "features"
   add_foreign_key "language_speakers", "languages"
+  add_foreign_key "races", "races", column: "super_race_id"
 end
