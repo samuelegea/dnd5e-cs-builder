@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_08_001118) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_09_022753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_08_001118) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "damage_types", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feature_owners", force: :cascade do |t|
     t.bigint "feature_id", null: false
     t.string "owner_type", null: false
@@ -111,10 +118,47 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_08_001118) do
     t.string "alignment", default: "", null: false
     t.jsonb "asi", default: {}, null: false
     t.bigint "super_race_id"
+    t.bigint "creature_type_id", null: false
+    t.index ["creature_type_id"], name: "index_races_on_creature_type_id"
     t.index ["super_race_id"], name: "index_races_on_super_race_id"
+  end
+
+  create_table "weapon_properties", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weapon_property_weapons", force: :cascade do |t|
+    t.bigint "weapon_id", null: false
+    t.bigint "weapon_property_id", null: false
+    t.integer "short_range"
+    t.integer "long_range"
+    t.string "alternative_damage_dice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weapon_id"], name: "index_weapon_property_weapons_on_weapon_id"
+    t.index ["weapon_property_id"], name: "index_weapon_property_weapons_on_weapon_property_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "cost_cp", default: 0, null: false
+    t.float "weight", default: 0.0, null: false
+    t.string "damage_dice", default: "", null: false
+    t.bigint "damage_type_id"
+    t.integer "weapon_type", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   add_foreign_key "feature_owners", "features"
   add_foreign_key "language_speakers", "languages"
+  add_foreign_key "races", "creature_types"
   add_foreign_key "races", "races", column: "super_race_id"
+  add_foreign_key "weapon_property_weapons", "weapon_properties"
+  add_foreign_key "weapon_property_weapons", "weapons"
+  add_foreign_key "weapons", "damage_types"
 end
