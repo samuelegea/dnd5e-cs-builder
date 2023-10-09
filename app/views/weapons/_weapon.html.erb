@@ -1,0 +1,32 @@
+<div id="<%= dom_id weapon %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= weapon.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cost cp:</strong>
+    <%= weapon.cost_cp %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Weight:</strong>
+    <%= weapon.weight %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Damage dice:</strong>
+    <%= weapon.damage_dice %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Damage type:</strong>
+    <%= weapon.damage_type_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this weapon", weapon, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this weapon', edit_weapon_path(weapon), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

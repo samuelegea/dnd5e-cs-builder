@@ -1,0 +1,2 @@
+module ArmorShieldsHelper
+end

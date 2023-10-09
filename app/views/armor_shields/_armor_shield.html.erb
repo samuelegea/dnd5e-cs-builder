@@ -1,0 +1,72 @@
+<div id="<%= dom_id armor_shield %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= armor_shield.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Base ac:</strong>
+    <%= armor_shield.base_ac %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Ac modifier:</strong>
+    <%= armor_shield.ac_modifier %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cap ac modifier:</strong>
+    <%= armor_shield.cap_ac_modifier %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Strength:</strong>
+    <%= armor_shield.strength %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Stealth disadvantage:</strong>
+    <%= armor_shield.stealth_disadvantage %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Weight:</strong>
+    <%= armor_shield.weight %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cost cp:</strong>
+    <%= armor_shield.cost_cp %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Don unit:</strong>
+    <%= armor_shield.don_unit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Don amount:</strong>
+    <%= armor_shield.don_amount %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Doff unit:</strong>
+    <%= armor_shield.doff_unit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Doff amount:</strong>
+    <%= armor_shield.doff_amount %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Category:</strong>
+    <%= armor_shield.category %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this armor shield", armor_shield, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this armor shield', edit_armor_shield_path(armor_shield), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
